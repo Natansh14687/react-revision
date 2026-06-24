@@ -1,5 +1,29 @@
 {
+  "name": "react",
+  "version": "1.0.0",
+  "description": "let's start the revision of react",
+  "homepage": "https://github.com/Natansh14687/react-revision#readme",
+  "bugs": {
+    "url": "https://github.com/Natansh14687/react-revision/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Natansh14687/react-revision.git"
+  },
+  "license": "ISC",
+  "author": "Natansh Khurana",
+  "type": "module",
+  "scripts": {
+    "start" : "parcel ./some_basics_00/reactIntro.html",
+    "build" : "parcel build reactIntro.html",
+    "test": "jest"
+  },
   "devDependencies": {
+    "parcel": "^2.16.4",
     "prettier": "3.8.4"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   }
 }
