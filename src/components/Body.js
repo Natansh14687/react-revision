@@ -1,14 +1,69 @@
 import ResCard from "./ResCard";
 import resList from "../utils/mockData";
+import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-  return (
+  const [resListData, setResListData] = useState([]);
+  const [filteredListData, setFilteredListData] = useState([]);
+  const [searchRes, setSearchRes] = useState("");
+
+  console.log("Body Component");
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://corsproxy.io/?url=https://www.swiggy.com/dapi/restaurants/list/v5?lat=29.5292791&lng=75.0324043&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
+    );
+
+    const json = await data.json();
+
+    setResListData(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
+    );
+    setFilteredListData(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
+    );
+  };
+  return resListData.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body p-3">
-      <div className="search mb-3">Search</div>
+      <div className="body-header">
+        <input
+          placeholder="search restaurant"
+          className="bg-gray-500 rounded p-1 mr-3 text-white"
+          value={searchRes}
+          onChange={(e) => {
+            const value = e.target.value;
+            setSearchRes(value);
+            const searchingRes = resListData.filter((res) => {
+              return res.info.name.toLowerCase().includes(value.toLowerCase());
+            });
+            setFilteredListData(searchingRes);
+          }}
+        />
+        <button
+          className="top-rated-res mb-3 cursor-pointer"
+          onClick={() => {
+            const filteredResListData = resListData.filter((res) => {
+              return res.info.avgRating > 4.2;
+            });
+            setFilteredListData(filteredResListData);
+          }}
+        >
+          Top Rated Restaurants
+        </button>
+      </div>
       <div className="resData flex flex-wrap">
-        {resList.map((restaurant) => 
-            <ResCard key={restaurant.info.id} resData={restaurant}/>
-        )}
+        {filteredListData.map((restaurant) => (
+          <ResCard key={restaurant.info.id} resData={restaurant} />
+        ))}
       </div>
     </div>
   );
