@@ -1,0 +1,30 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "Just starting the app",
+  "homepage": "https://github.com/Natansh14687/react-revision#readme",
+  "bugs": {
+    "url": "https://github.com/Natansh14687/react-revision/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Natansh14687/react-revision.git"
+  },
+  "license": "ISC",
+  "author": "Natansh",
+  "type": "module",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.1",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.1"
+  }
+}
