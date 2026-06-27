@@ -1,5 +1,6 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [btnValue, setBtnValue] = useState("Login");
@@ -19,9 +20,9 @@ const Header = () => {
       </div>
       <div className="nav_items w-lg content-center">
         <ul className="flex mr-5 justify-between">
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
           <li>Cart</li>
           <button
             className="border py-2 px-4 rounded-xl cursor-pointer bg-gray-500 text-white"
