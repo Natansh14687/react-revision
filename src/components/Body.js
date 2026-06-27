@@ -8,7 +8,6 @@ const Body = () => {
   const [filteredListData, setFilteredListData] = useState([]);
   const [searchRes, setSearchRes] = useState("");
 
-  console.log("Body Component");
 
   useEffect(() => {
     fetchData();

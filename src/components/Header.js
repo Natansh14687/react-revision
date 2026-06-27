@@ -1,8 +1,15 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
   const [btnValue, setBtnValue] = useState("Login");
+
+  {/* if no dependency array is provided in useEffect, then every time the component will be re-rendered the useEffect hook will be called **/ }
+  {/* if empty dependency array is provided in useEffect hook then useEffect will be called only on initial render **/}
+  {/* if dependency is provided in the dependency array then useEffect will be called every time the value of dependency changes and on initial render **/}
+  useEffect(() => {
+    console.log("Inside useEffect");
+  },[btnValue])
   console.log("Header Component");
 
   return (
