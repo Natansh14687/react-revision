@@ -1,9 +1,11 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [btnValue, setBtnValue] = useState("Login");
+  const isOnline = useOnlineStatus();
 
   {/* if no dependency array is provided in useEffect, then every time the component will be re-rendered the useEffect hook will be called **/ }
   {/* if empty dependency array is provided in useEffect hook then useEffect will be called only on initial render **/}
@@ -21,6 +23,7 @@ const Header = () => {
       <div className="nav_items w-lg content-center">
         <ul className="flex mr-5 justify-between">
           <li><Link to="/">Home</Link></li>
+          {isOnline ? <li>Online ✅</li> : <li>Offline ❌</li>}
           <li><Link to="/about">About</Link></li>
           <li><Link to="/contact">Contact</Link></li>
           <li>Cart</li>
