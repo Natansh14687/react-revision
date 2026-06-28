@@ -26,7 +26,7 @@ const Header = () => {
           {isOnline ? <li>Online ✅</li> : <li>Offline ❌</li>}
           <li><Link to="/about">About</Link></li>
           <li><Link to="/contact">Contact</Link></li>
-          <li>Cart</li>
+          <li><Link to="/grocery">Grocery</Link></li>
           <button
             className="border py-2 px-4 rounded-xl cursor-pointer bg-gray-500 text-white"
             onClick={() => {
