@@ -1,7 +1,7 @@
-import {CLOUD_IMG_URL} from "../utils/constants"
+import { CLOUD_IMG_URL } from "../utils/constants";
 
-const ResCard = ({resData}) => {
-    const {name, avgRating, cuisines, cloudinaryImageId, sla} = resData.info
+const ResCard = ({ resData }) => {
+  const { name, avgRating, cuisines, cloudinaryImageId, sla } = resData.info;
   return (
     <div className="card-container w-80 hover:border-2 rounded-3xl p-2 cursor-pointer">
       <div className="card-img-container">
@@ -12,11 +12,22 @@ const ResCard = ({resData}) => {
       </div>
       <div className="resInfo py-4 px-5">
         <div>{name}</div>
-        <div>{avgRating} - {sla.slaString}</div>
+        <div>
+          {avgRating} - {sla.slaString}
+        </div>
         <div>{cuisines.join(", ")}</div>
       </div>
     </div>
   );
+};
+
+export const withPromotedLabel = (ResCard) => {
+  return (props) => {
+    <div>
+      <div className="bg-black text-white p-4 rounded-xl">Promoted</div>
+      <ResCard {...props}/>
+    </div>;
+  };
 };
 
 export default ResCard;

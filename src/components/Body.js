@@ -5,12 +5,15 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useAllRestaurants from "../utils/useAllRestaurants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+// import { withPromotedLabel } from "./ResCard";
 
 const Body = () => {
   const resListData = useAllRestaurants();
   const [filteredListData, setFilteredListData] = useState([]);
   const [searchRes, setSearchRes] = useState("");
   const isOnline = useOnlineStatus();
+  // const ResCardPromoted = withPromotedLabel(ResCard);
+
   console.log(isOnline);
 
   useEffect(() => {
